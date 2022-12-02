@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+List cities
+{% endblock %}
+{% block content %}
+<h1> List cities </h1>
+<div class="row">
+    <div class="col-md">
+        {% for object in objects_list %}
+        <p>{{ object.name }}</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
