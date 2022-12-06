@@ -11,6 +11,8 @@ __all__ = (
 
 
 def home(request, pk=None):
+    if request.method == 'POST':
+        print(request.POST)
     # if pk:
     # city = City.objects.filter(id=pk).first()
     # city = get_object_or_404(City, id=pk)
