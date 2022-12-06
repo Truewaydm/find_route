@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import DetailView
+from django.urls import reverse_lazy
+from django.views.generic import DetailView, CreateView
 
 from cities.forms import HtmlForm, CityForm
 from cities.models import City
@@ -7,7 +8,7 @@ from cities.models import City
 # Create your views here.
 
 __all__ = (
-    'home', 'CityDetailView'
+    'home', 'CityDetailView', 'CityCreateView'
 )
 
 
@@ -32,3 +33,10 @@ def home(request, pk=None):
 class CityDetailView(DetailView):
     queryset = City.objects.all()
     template_name = 'cities/detail.html'
+
+
+class CityCreateView(CreateView):
+    model = City
+    form_class = CityForm
+    template_name = 'cities/create.html'
+    success_url = reverse_lazy('cities:home')
