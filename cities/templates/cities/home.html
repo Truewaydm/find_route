@@ -13,10 +13,13 @@ List cities
         {% endfor %}
     </div>
 </div>
-
-<form action="" method="post"> {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
-</form>
+<div class="row">
+    <div class="col-md-4">
+        <form action="" method="post"> {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
 
 {% endblock %}
