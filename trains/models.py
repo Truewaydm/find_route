@@ -6,9 +6,9 @@ from cities.models import City
 class Train(models.Model):
     name = models.CharField(max_length=50, unique=True, verbose_name='Number train')
     travel_time = models.PositiveSmallIntegerField(verbose_name='Travel time')
-    form_city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='from_city_set',
+    form_city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='from_city',
                                   verbose_name='From what city')
-    to_city = models.ForeignKey('cities.City', on_delete=models.CASCADE, related_name='from_city_set',
+    to_city = models.ForeignKey('cities.City', on_delete=models.CASCADE, related_name='to_city',
                                 verbose_name='In which city')
 
     def __str__(self):
