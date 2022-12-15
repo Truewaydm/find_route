@@ -23,8 +23,16 @@ List trains
                 <td>{{ object.from_city }}</td>
                 <td>{{ object.to_city }}</td>
                 <td>{{ object.travel_time }}</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td>
+                    <a href="{% url 'trains:update' pk=object.pk %}">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'trains:delete' pk=object.pk %}">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </a>
+                </td>
             </tr>
             {% endfor %}
         </table>
