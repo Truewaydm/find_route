@@ -18,7 +18,7 @@ class Train(models.Model):
     class Meta:
         verbose_name = 'Train'
         verbose_name_plural = 'Trains'
-        ordering = ['travel_time']
+        ordering = ['name']
 
     def clean(self):
         if self.from_city == self.to_city:
