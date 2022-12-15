@@ -11,8 +11,8 @@ from trains.models import Train
 # Create your views here.
 
 __all__ = (
-    'home', 'TrainListView',
-    # 'TrainDetailView', 'TrainCreateView', 'TrainUpdateView', 'TrainDeleteView'
+    'home', 'TrainListView', 'TrainDetailView',
+    # 'TrainCreateView', 'TrainUpdateView', 'TrainDeleteView'
 )
 
 
@@ -25,11 +25,11 @@ def home(request, pk=None):
     return render(request, 'trains/home.html', context)
 
 
-# class TrainDetailView(DetailView):
-#     queryset = Train.objects.all()
-#     template_name = 'trains/detail.html'
-#
-#
+class TrainDetailView(DetailView):
+    queryset = Train.objects.all()
+    template_name = 'trains/detail.html'
+
+
 # class TrainCreateView(SuccessMessageMixin, CreateView):
 #     model = Train
 #     form_class = TrainForm
