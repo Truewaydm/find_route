@@ -4,7 +4,7 @@ Search routes
 {% endblock %}
 {% block content %}
 <h1> Search routes </h1>
-
-{% include 'form.html' with button='Search' %}
+{% url 'find_routes' as action %}
+{% include 'form.html' with button='Search' action=action %}
 
 {% endblock %}
