@@ -4,6 +4,22 @@ Search routes
 {% endblock %}
 {% block content %}
 <h1> Search routes </h1>
+<div class="row">
+    <div class="col-md-8 mx-auto">
+
+        {% if routes %}
+        <h3>Routes from city: {{ cities.from_city }} in city: {{ cities.to_city }}</h3>
+            {% for route in routes %}
+                <p>Travel time: {{ route.total_time }}</p>
+                <p>List of trains on this route</p>
+                    {% for train in route.trains %}
+                        <p>{{ train }}</p>
+                    {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+    </div>
+</div>
 {% url 'find_routes' as action %}
 {% include 'form.html' with button='Search' action=action %}
 
