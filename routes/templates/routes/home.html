@@ -8,14 +8,29 @@ Search routes
     <div class="col-md-8 mx-auto">
 
         {% if routes %}
-        <h3>Routes from city: {{ cities.from_city }} in city: {{ cities.to_city }}</h3>
-            {% for route in routes %}
-                <p>Travel time: {{ route.total_time }}</p>
-                <p>List of trains on this route</p>
-                    {% for train in route.trains %}
-                        <p>{{ train }}</p>
-                    {% endfor %}
+        <h3>Route {% if routes|length != 1 %} s {% endif %}
+            from city: {{ cities.from_city }} in city: {{ cities.to_city }}</h3>
+        <br>
+        {% for route in routes %}
+        {% if forloop.first %} <h4>The shortest route</h4> {% endif %}
+        <h5>Travel time: {{ route.total_time }}</h5>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col"><p>List of trains on this route</p></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for train in route.trains %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <th>Train {{ train.name }} from city {{ train.from_city.name }} to city {{ train.to_city.name }}</th>
+            </tr>
             {% endfor %}
+            </tbody>
+        </table>
+        {% endfor %}
         {% endif %}
 
     </div>
