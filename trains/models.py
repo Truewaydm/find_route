@@ -15,6 +15,7 @@ class Train(models.Model):
     def __str__(self):
         return f'Train №{self.name} is city {self.from_city}'
 
+    # Meta data in Django admin panel
     class Meta:
         verbose_name = 'Train'
         verbose_name_plural = 'Trains'
