@@ -15,6 +15,11 @@ class Route(models.Model):
     def str(self):
         return f'Route №{self.name} is city {self.from_city}'
 
+    # View name in Django Admin panel
+    def __str__(self):
+        return self.name
+
+    # Meta data in Django admin panel
     class Meta:
         verbose_name = 'Route'
         verbose_name_plural = 'Routes'

@@ -53,3 +53,16 @@ def add_route(request):
     else:
         messages.error(request, 'Unable to save non-existent route')
         return redirect('/')
+
+
+def save_route(request):
+    if request.method == 'POST':
+        form = RouteModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Route successfully saved')
+            return redirect('/')
+        return render(request, 'routes/create.html', {'form': form})
+    else:
+        messages.error(request, 'Unable to save non-existent route')
+        return redirect('/')
