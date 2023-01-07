@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}
+Create route
+{% endblock %}
+{% block content %}
+<h1> Create route </h1>
 
-</body>
-</html>
+{% include 'form.html' with button='Save' %}
+
+{% endblock %}

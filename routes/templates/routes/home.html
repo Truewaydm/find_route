@@ -9,7 +9,7 @@ Search routes
 
         {% if routes %}
         <h3>Route {% if routes|length != 1 %} s {% endif %}
-            from city: {{ cities.from_city }} in city: {{ cities.to_city }}</h3>
+            from city: {{ cities.from_city.name }} in city: {{ cities.to_city.name }}</h3>
         <br>
         {% for route in routes %}
 
