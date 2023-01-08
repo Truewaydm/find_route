@@ -46,13 +46,14 @@ class TrainUpdateView(SuccessMessageMixin, UpdateView):
     success_message = "Train successfully edited"
 
 
-class TrainDeleteView(DeleteView):
+class TrainDeleteView(SuccessMessageMixin, DeleteView):
     model = Train
     template_name = 'trains/delete.html'
     success_url = reverse_lazy('trains:home')
+    success_message = 'Train successfully deleted'
 
     def get(self, request, *args, **kwargs):
-        messages.success(request, 'Train successfully deleted')
+        # messages.success(request, 'Train successfully deleted')
         return self.post(request, *args, **kwargs)
 
 
