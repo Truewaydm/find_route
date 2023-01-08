@@ -1,10 +1,12 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, DeleteView
 
+from accounts.forms import UserLoginForm
 from cities.models import City
 from routes.forms import RouteForm, RouteModelForm
 from routes.models import Route
@@ -85,10 +87,14 @@ class RouteDetailView(DetailView):
     template_name = 'routes/detail.html'
 
 
-class RouteDeleteView(LoginRequiredMixin, DeleteView):
+class RouteDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Route
-    success_url = reverse_lazy('home')
+    # success_url = reverse_lazy('home')
+    form_class = UserLoginForm
+    template_name = 'accounts/login.html'
+    success_url = reverse_lazy('list')
+    success_message = 'Route successfully deleted'
 
     def get(self, request, *args, **kwargs):
-        messages.success(request, 'Route successfully deleted')
+        # messages.success(request, 'Route successfully deleted')
         return self.post(request, *args, **kwargs)

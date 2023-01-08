@@ -1,11 +1,12 @@
 from django import forms
 from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.hashers import check_password
 
 User = get_user_model()
 
 
-class UserLoginForm(forms.Form):
+class UserLoginForm(AuthenticationForm):
     username = forms.CharField(label='username', widget=forms.TextInput(attrs={
         'class': 'form-control',
         'placeholder': 'Input username'
