@@ -12,6 +12,7 @@ List cities
                 <td>
                     <a href="{% url 'cities:detail' pk=object.pk %}">{{ object.name }}</a>
                 </td>
+                {% if user.is_authenticated %}
                 <td>
                     <a href="{% url 'cities:update' pk=object.pk %}">
                         <button type="submit" class="btn btn-primary">Update</button>
@@ -22,6 +23,10 @@ List cities
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </a>
                 </td>
+                {% else %}
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                {% endif %}
             </tr>
             {% endfor %}
         </table>
@@ -56,6 +61,7 @@ List cities
     </ul>
 </nav>
 
+{% if user.is_authenticated %}
 <div class="row">
     <div class="col-md-4">
         <form action="{% url 'cities:create' %}" method="post"> {% csrf_token %}
@@ -63,6 +69,7 @@ List cities
             <input type="submit" value="Submit">
         </form>
     </div>
+    {% endif %}
 </div>
 
 {% endblock %}
