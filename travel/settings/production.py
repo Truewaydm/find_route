@@ -179,3 +179,4 @@ LOGGING = {
 }
 
 STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
