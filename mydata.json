@@ -1,0 +1,168 @@
+[
+  {
+    "model": "cities.city",
+    "pk": 1,
+    "fields": {
+      "name": "Amsterdam"
+    }
+  },
+  {
+    "model": "cities.city",
+    "pk": 2,
+    "fields": {
+      "name": "Berlin"
+    }
+  },
+  {
+    "model": "cities.city",
+    "pk": 3,
+    "fields": {
+      "name": "Madrid"
+    }
+  },
+  {
+    "model": "cities.city",
+    "pk": 4,
+    "fields": {
+      "name": "Rome"
+    }
+  },
+  {
+    "model": "cities.city",
+    "pk": 5,
+    "fields": {
+      "name": "Paris"
+    }
+  },
+  {
+    "model": "cities.city",
+    "pk": 6,
+    "fields": {
+      "name": "Warsaw"
+    }
+  },
+  {
+    "model": "cities.city",
+    "pk": 7,
+    "fields": {
+      "name": "Budapest"
+    }
+  },
+  {
+    "model": "cities.city",
+    "pk": 8,
+    "fields": {
+      "name": "Barcelona"
+    }
+  },
+  {
+    "model": "routes.route",
+    "pk": 4,
+    "fields": {
+      "name": "1",
+      "travel_times": 14,
+      "from_city": 1,
+      "to_city": 3,
+      "trains": [
+        11,
+        12,
+        13
+      ]
+    }
+  },
+  {
+    "model": "routes.route",
+    "pk": 6,
+    "fields": {
+      "name": "MB-route",
+      "travel_times": 21,
+      "from_city": 1,
+      "to_city": 6,
+      "trains": []
+    }
+  },
+  {
+    "model": "routes.route",
+    "pk": 15,
+    "fields": {
+      "name": "sad",
+      "travel_times": 12,
+      "from_city": 7,
+      "to_city": 4,
+      "trains": [
+        17,
+        13
+      ]
+    }
+  },
+  {
+    "model": "trains.train",
+    "pk": 11,
+    "fields": {
+      "name": "2",
+      "travel_time": 2,
+      "from_city": 2,
+      "to_city": 7
+    }
+  },
+  {
+    "model": "trains.train",
+    "pk": 12,
+    "fields": {
+      "name": "3",
+      "travel_time": 6,
+      "from_city": 7,
+      "to_city": 3
+    }
+  },
+  {
+    "model": "trains.train",
+    "pk": 13,
+    "fields": {
+      "name": "4",
+      "travel_time": 12,
+      "from_city": 3,
+      "to_city": 6
+    }
+  },
+  {
+    "model": "trains.train",
+    "pk": 14,
+    "fields": {
+      "name": "5",
+      "travel_time": 5,
+      "from_city": 2,
+      "to_city": 6
+    }
+  },
+  {
+    "model": "trains.train",
+    "pk": 15,
+    "fields": {
+      "name": "6",
+      "travel_time": 3,
+      "from_city": 1,
+      "to_city": 6
+    }
+  },
+  {
+    "model": "trains.train",
+    "pk": 16,
+    "fields": {
+      "name": "7",
+      "travel_time": 4,
+      "from_city": 7,
+      "to_city": 6
+    }
+  },
+  {
+    "model": "trains.train",
+    "pk": 17,
+    "fields": {
+      "name": "1",
+      "travel_time": 1,
+      "from_city": 1,
+      "to_city": 2
+    }
+  }
+]
