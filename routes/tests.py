@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.test import TestCase
 
 from cities.models import City
@@ -27,3 +28,24 @@ class AllTestsCase(TestCase):
         ]
         Train.objects.bulk_create(list)
 
+    def test_model_city_duplicate(self):
+        '''088 Checking the impossibility of creating duplicates'''
+        city = City(name='A')
+        with self.assertRaises(ValidationError):
+            city.full_clean()
+
+    def test_model_train_duplicate(self):
+        '''088 Checking the impossibility of creating duplicates'''
+        train = Train(name='t1', from_city=self.city_A, to_city=self.city_B, travel_time=129)
+        with self.assertRaises(ValidationError):
+            train.full_clean()
+
+    def test_model_train_duplicate(self):
+        '''088 Checking the impossibility of creating duplicates'''
+        train = Train(name='t1234', from_city=self.city_A, to_city=self.city_B, travel_time=9)
+        with self.assertRaises(ValidationError):
+            train.full_clean()
+        try:
+            train.full_clean()
+        except ValidationError as e:
+            self.assertEqual({'__all__': ['Change travel time']}, e.message_dict)
