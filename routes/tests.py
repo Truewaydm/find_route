@@ -3,6 +3,7 @@ from django.test import TestCase
 from django.urls import reverse
 
 from cities.models import City
+from routes.forms import RouteForm
 from trains.models import Train
 from routes import views as routes_view
 from cities import views as cities_view
@@ -73,3 +74,13 @@ class AllTestsCase(TestCase):
         graph = get_graph(qs)
         all_routes = list(dfs_paths(graph, self.city_A.id, self.city_E.id))
         self.assertEqual(len(all_routes), 4)
+
+    def test_valid_route_form(self):
+        data = {
+            'from_city': self.city_A.id,
+            'to_city': self.city_B.id,
+            'cities': [self.city_E.id, self.city_D.id],
+            'traveling_time': 9
+        }
+        form = RouteForm(data=data)
+        self.assertTrue(form.is_valid())
