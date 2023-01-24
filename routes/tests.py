@@ -1,8 +1,11 @@
 from django.core.exceptions import ValidationError
 from django.test import TestCase
+from django.urls import reverse
 
 from cities.models import City
 from trains.models import Train
+from routes import views as routes_view
+from cities import views as cities_view
 
 
 # Create your tests here.
@@ -40,7 +43,7 @@ class AllTestsCase(TestCase):
         with self.assertRaises(ValidationError):
             train.full_clean()
 
-    def test_model_train_duplicate(self):
+    def test_model_train_train_duplicate(self):
         '''088 Checking the impossibility of creating duplicates'''
         train = Train(name='t1234', from_city=self.city_A, to_city=self.city_B, travel_time=9)
         with self.assertRaises(ValidationError):
@@ -49,3 +52,17 @@ class AllTestsCase(TestCase):
             train.full_clean()
         except ValidationError as e:
             self.assertEqual({'__all__': ['Change travel time']}, e.message_dict)
+            self.assertIn('Change travel time', e.messages)
+
+    def test_home_routes_views(self):
+        response = self.client.get(reverse('home'))
+        self.assertEqual(200, response.status_code)
+        self.assertTemplateUsed(response, template_name='routes/home.html')
+        self.assertEqual(response.resolver_match.func, routes_view.home)
+
+    def test_class_base_view_detail_views(self):
+        response = self.client.get(reverse('cities:detail', kwargs={'pk': self.city_A.id}))
+        self.assertEqual(200, response.status_code)
+        self.assertTemplateUsed(response, template_name='cities/detail.html')
+        self.assertEqual(response.resolver_match.func.__name__,
+                         cities_view.CityDetailView.as_view().__name__)
