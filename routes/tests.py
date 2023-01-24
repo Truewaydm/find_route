@@ -84,3 +84,23 @@ class AllTestsCase(TestCase):
         }
         form = RouteForm(data=data)
         self.assertTrue(form.is_valid())
+
+    def test_message_error_more_time(self):
+        data = {
+            'from_city': self.city_A.id,
+            'to_city': self.city_E.id,
+            'cities': [self.city_C.id],
+            'traveling_time': 9
+        }
+        response = self.client.post('/find_routes/', data)
+        self.assertContains(response, 'Travel time is longer than specified', 1, 200)
+
+    def test_message_error_from_cities(self):
+        data = {
+            'from_city': self.city_B.id,
+            'to_city': self.city_E.id,
+            'cities': [self.city_C.id],
+            'traveling_time': 349
+        }
+        response = self.client.post('/find_routes/', data)
+        self.assertContains(response, 'Route through these cities is not possible', 1, 200)
