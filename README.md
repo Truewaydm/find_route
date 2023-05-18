@@ -23,3 +23,9 @@ Should cover 40% of the code.
 
 ### Access to the site.
 Access to adding/editing Trains/Cities, as well as deleting any records, should only be available to registered users.
+
+
+### Project run
+```sh
+docker-compose up
+```
